@@ -44,7 +44,7 @@ public class ZombiesManager {
 	 * 
 	 * @return a random row.
 	 */
-	private int randomZombieRow() {
+	public int randomZombieRow() {
 		return rand.nextInt(Game.NUM_ROWS);
 	}
 	
@@ -62,6 +62,17 @@ public class ZombiesManager {
 		}
 		return canAdd;
 	}
+
+	public int getRemainingZombies() {
+		
+		return remainingZombies;
+	}
+
+	public boolean zombieRandom() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 	// TODO fill your code
 }

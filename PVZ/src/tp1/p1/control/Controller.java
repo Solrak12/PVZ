@@ -5,8 +5,10 @@ import static tp1.p1.view.Messages.*;
 import java.util.Scanner;
 
 import tp1.p1.logic.Game;
+import tp1.p1.logic.gameobjects.Zombie;
 import tp1.p1.view.GamePrinter;
 import tp1.p1.view.Messages;
+import tp1.utils.StringUtils;
 
 /**
  * Accepts user input and coordinates the game execution logic.
@@ -62,22 +64,32 @@ public class Controller {
 		char op = scanner.next().charAt(0);
 		switch(op) {
 		case 'a':
-			//add plant col row
+			//ADD
 			break;
 		case 'l':
-			//print the list of available plants
+			System.out.println(this.game.listPlants() +"\n");
 			break;
 		case 'r':
-			//start a new game
+			game.reset();
 			break;
 		case 'h':
-			//print this help message
+			System.out.println("Add <plant> <col> <row>: add a plant in position (col, row)" + "\n" + "List: print the list of available plants"+"\n" +
+			"Reset: start a new game" + "\n" + "Help: print this help message" + "\n" + "Exit: terminate the program" + "\n" + "None | \"\": skips cycle");
+			
 			break;
 		case 'e':
-			//terminate the program
+			System.out.println(StringUtils.centre("GAME OVER",100));
+			System.exit(0);
 			break;
 		case 'n':
-			//skips cycle
+			if(game.getZombiesLeft().zombieRandom() && game.getZombiesLeft().getRemainingZombies() > 0) {
+				Zombie z = new Zombie(game.getRandom(),7);
+				game.addZombie(z);
+			}
+			this.game.setContCiclos(this.game.getContCiclos()+1);
+			game.Update();
+			System.out.println(game.draw());
+			System.out.println(this.game.getGamePrinter().toString());
 			break;
 		}
 		
