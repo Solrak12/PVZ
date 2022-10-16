@@ -64,7 +64,7 @@ public class Controller {
 		char op = scanner.next().charAt(0);
 		switch(op) {
 		case 'a':
-			//ADD
+			//ADD 
 			break;
 		case 'l':
 			System.out.println(this.game.listPlants() +"\n");
