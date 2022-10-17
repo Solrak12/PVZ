@@ -60,28 +60,30 @@ public class Controller {
 	/**
 	 * Runs the game logic.
 	 */
-	public void run() {
+	public void run() { //Menu
 		char op = scanner.next().charAt(0);
+		private string sunf = "s";
+		private string pesh = "p";
 		switch(op) {
-		case 'a':
-			//ADD 
+		case 'a': //ADD plant
+			System.
 			break;
-		case 'l':
+		case 'l': //Listar plantas
 			System.out.println(this.game.listPlants() +"\n");
 			break;
-		case 'r':
+		case 'r': //Reset
 			game.reset();
 			break;
-		case 'h':
+		case 'h': //Help
 			System.out.println("Add <plant> <col> <row>: add a plant in position (col, row)" + "\n" + "List: print the list of available plants"+"\n" +
 			"Reset: start a new game" + "\n" + "Help: print this help message" + "\n" + "Exit: terminate the program" + "\n" + "None | \"\": skips cycle");
 			
 			break;
-		case 'e':
+		case 'e': //Exit
 			System.out.println(StringUtils.centre("GAME OVER",100));
 			System.exit(0);
 			break;
-		case 'n':
+		case 'n'://Skyp cycle
 			if(game.getZombiesLeft().zombieRandom() && game.getZombiesLeft().getRemainingZombies() > 0) {
 				Zombie z = new Zombie(game.getRandom(),7);
 				game.addZombie(z);
