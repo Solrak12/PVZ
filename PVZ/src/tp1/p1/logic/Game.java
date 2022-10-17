@@ -4,7 +4,9 @@ import java.util.Random;
 
 
 import tp1.p1.control.Level;
+import tp1.p1.logic.gameobjects.Peashooter;
 import tp1.p1.logic.gameobjects.PeashooterList;
+import tp1.p1.logic.gameobjects.Sunflower;
 import tp1.p1.logic.gameobjects.SunflowerList;
 import tp1.p1.logic.gameobjects.Zombie;
 import tp1.p1.logic.gameobjects.ZombieList;
@@ -66,5 +68,22 @@ public class Game {
 	public GamePrinter getGamePrinter() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public void addPeashooter(Peashooter pesh) {
+		// TODO Auto-generated method stub
+		
+	}
+	public int getSoles() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	public void addSunflower(Sunflower sunf) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void addSoles(int i) {
+		// TODO Auto-generated method stub
+		
 	}
 }
