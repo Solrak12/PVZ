@@ -29,4 +29,9 @@ public class PeashooterList {
         }
         Peashootercont--;
 		}
+
+	public void add(Peashooter pesh) { //Añadir un guisante al array
+		// TODO Auto-generated method stub
+		
+	}
 	}

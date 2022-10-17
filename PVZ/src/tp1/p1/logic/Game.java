@@ -68,6 +68,15 @@ public class Game {
 		
 		return 0;
 	}
+	private boolean isPositionEmpty(int Cols, int row) { //Usarlo para add zombie
+        boolean vacio = false;
+        for(int i = 0; i<numZombies ;i++) {
+            if(zombies.listaZ[i].getX() != row && zombies.listaZ[i].getY() != Cols) {
+                vacio = true;
+            }
+        }
+        return vacio;
+    }
 	public void addZombie(Zombie z) {
 		
 	}
@@ -89,8 +98,12 @@ public class Game {
 		return null;
 	}
 	
-	public void addPeashooter(Peashooter pesh) {
-		// TODO Auto-generated method stub
+	public void addPeashooter(Peashooter pesh) { //Position empty para las plantas tambn
+		if(isPositionEmpty(pesh.getX(),pesh.getY())&& getSoles()>0) {
+			setSoles(getSoles()-50);
+			Peashooters.add(pesh);
+			//Dibujarlo en tablero
+		}
 		
 	}
 	public int getSoles() { //?
