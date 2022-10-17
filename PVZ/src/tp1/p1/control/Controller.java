@@ -70,8 +70,8 @@ public class Controller {
 		case 'a':
 			int x = Integer.parseInt(word[2]);
 			int y =Integer.parseInt(word[3]);
-			if(word[1].equals("p") || word[1].equals("s")) {
-				if(word[1].equalsIgnoreCase("p")) {
+			if(word[1].equals("p") || word[1].equals("s") || word[1].equals("Peashooter")|| word[1].equals("Sunflower")) {
+				if(word[1].equalsIgnoreCase("p")||word[1].equalsIgnoreCase("Peashooter")) {
 					if(game.getSoles() >=50) {
 						Peashooter pesh = new Peashooter(x,y);
 						game.addPeashooter(pesh);
@@ -80,7 +80,7 @@ public class Controller {
 						System.out.println("No tienes suficientes soles");
 				
 				}
-				else if(word[1].equalsIgnoreCase("s")) {
+				else if(word[1].equalsIgnoreCase("s")|| word[1].equalsIgnoreCase("Sunflower")) {
 					if(game.getSoles() >=20) {
 						Sunflower sunf = new Sunflower(x,y);
 						game.addSunflower(sunf);
@@ -127,6 +127,8 @@ public class Controller {
 			System.out.println(game.draw());
 			System.out.println(this.game.getGamePrinter().toString());
 			break;
+		default :
+			System.out.println("Ese comando no es valido\n");
 		}
 		
 		

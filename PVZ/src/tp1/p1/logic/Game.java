@@ -34,7 +34,7 @@ public class Game {
 	public void reset() {
 		
 	}
-	public String listPlants() {
+	public String listPlants() { //Muestra las plantas
 		
 		return null;
 	}
@@ -50,19 +50,20 @@ public class Game {
 		return 0;
 	}
 	public void addZombie(Zombie z) {
-		// TODO Auto-generated method stub
+		
 		
 	}
+	
 	public int getContCiclos() {
-		// TODO Auto-generated method stub
-		return 0;
+		return contc;
+		
 	}
-	public void setContCiclos(int i) {
-		// TODO Auto-generated method stub
+	public void setContCiclos(int ciclos) {
+		this.contc = ciclos;
 		
 	}
 	public String draw() {
-		// TODO Auto-generated method stub
+		System.out.println("Number of cycles: "+getContCiclos()+"\n" + "Sun coins: "+this.getSoles()+"\n"+"Remaining zombies: "+ getZombiesLeft()+"\n");
 		return null;
 	}
 	public GamePrinter getGamePrinter() {
@@ -74,9 +75,12 @@ public class Game {
 		// TODO Auto-generated method stub
 		
 	}
-	public int getSoles() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getSoles() { //?
+		return soles;
+		
+	}
+	public void setSoles(int Soles) {
+		this.soles = Soles;
 	}
 	public void addSunflower(Sunflower sunf) {
 		// TODO Auto-generated method stub
@@ -85,5 +89,9 @@ public class Game {
 	public void addSoles(int i) {
 		// TODO Auto-generated method stub
 		
+	}
+	public String positionToString(int col, int row) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
