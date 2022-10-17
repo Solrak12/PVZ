@@ -66,7 +66,7 @@ public class Controller {
 		private string pesh = "p";
 		switch(op) {
 		case 'a': //ADD plant
-			System.
+			System.out.println()
 			break;
 		case 'l': //Listar plantas
 			System.out.println(this.game.listPlants() +"\n");
