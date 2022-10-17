@@ -43,10 +43,14 @@ public class Sunflower {
 	public int getCiclos() {
 		return ciclos;
 	}
-	public void GeneraSoles(Game game) { // Girasol genera 20 soles cada 2 turnos(par)
-		if(this.ciclos > 0 && this.ciclos % 2 ==0) {
-			game.addSoles(20);
-		}
-		this.ciclos++;
-	}
+	public int addSoles(SunflowerList sunflowers) {
+        //soles producidos
+        int soles = 0;
+        for(int i = 0; i<sunflowers.Sunflowercont ; i++) {
+            if(sunflowers.listaS[i].getCiclos() % 3 == 0) {
+                soles += 10;
+            }
+        }
+        return soles;
+    }
 }

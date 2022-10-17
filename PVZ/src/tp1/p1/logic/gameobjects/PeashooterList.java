@@ -16,7 +16,17 @@ public class PeashooterList {
 		listaP[Peashootercont].y=col;
 		Peashootercont++;
 	}
-	public void DelPeashooter(int col, int row) {
-		
+	public void DeletePeashooter(int col, int row) {
+        int pos=-1;
+        for(int i = 0 ; i<Peashootercont; i++) {
+            if(row == listaP[i].x && col == listaP[i].y) {
+                pos = i;
+            }
+        }
+
+        for(int j=pos; j<Peashootercont - 1 ;j++) {
+            listaP[j]=listaP[j+1];
+        }
+        Peashootercont--;
+		}
 	}
-}

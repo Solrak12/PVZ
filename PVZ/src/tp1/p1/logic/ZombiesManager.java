@@ -38,6 +38,15 @@ public class ZombiesManager {
 	private boolean shouldAddZombie() {
 		return rand.nextDouble() < level.getZombieFrequency();
 	}
+	private boolean isPositionEmpty(int Cols, int row) {
+        boolean vacio = false;
+        for(int i = 0; i<remainingZombies ;i++) {
+            if(zombies.listaZ[i].getX() != row && zombies.listaZ[i].getY() != Cols) {
+                vacio = true;
+            }
+        }
+        return vacio;
+    }
 	
 	/**
 	 * Return a random row within the board limits.
@@ -66,6 +75,9 @@ public class ZombiesManager {
 	public int getRemainingZombies() {
 		
 		return remainingZombies;
+	}
+	public void setRemainingZombies(int numZ) {
+		this.remainingZombies = numZ;
 	}
 
 	public boolean zombieRandom() {

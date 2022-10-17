@@ -11,6 +11,7 @@ import tp1.p1.logic.gameobjects.SunflowerList;
 import tp1.p1.logic.gameobjects.Zombie;
 import tp1.p1.logic.gameobjects.ZombieList;
 import tp1.p1.view.GamePrinter;
+import tp1.p1.view.Messages;
 
 public class Game {
 	
@@ -19,23 +20,41 @@ public class Game {
 	
 	int seed;
 	Level level;
-	int contc = 0;
-	int soles = 50;
+	int contc;
+	int soles;
+	int numZombies;
 	Random rand;
-	
+	GamePrinter gamePrinter;
 	ZombieList zombies;
 	SunflowerList Sunflowers;
 	PeashooterList Peashooters;
 	ZombiesManager zombieRemain;
+	public Game() { //Añadir parametros
+		this.soles =50;
+		this.contc =0;
+		this.Sunflowers = new SunflowerList();
+		this.Peashooters = new PeashooterList();
+		this.zombies = new ZombieList();
+		this.numZombies = numZombies;
+		
+	}
 
 	public void Update(){
 		
 	}
 	public void reset() {
+		this.Sunflowers = new SunflowerList();
+		this.Peashooters = new PeashooterList();
+		this.zombies = new ZombieList();
+		this.zombieRemain.setRemainingZombies(numZombies);
 		
+		this.contc =0;
+		this.soles =50;
+		this.gamePrinter = new GamePrinter(this);
 	}
-	public String listPlants() { //Muestra las plantas
-		
+	
+	public String ListPlants() { //Muestra las plantas
+		System.out.println(Messages.PEASHOOTER_DESCRIPTION +"\n"+Messages.SUNFLOWER_DESCRIPTION);
 		return null;
 	}
 	public ZombiesManager getZombiesLeft() {
@@ -45,12 +64,11 @@ public class Game {
 	public void setZombiesLeft(ZombiesManager zombiesRemain) {
 		this.zombieRemain = zombiesRemain;
 	}
-	public int getRandom() {
+	public int getRandom() { //Salida random del zombie
 		
 		return 0;
 	}
 	public void addZombie(Zombie z) {
-		
 		
 	}
 	
@@ -86,10 +104,7 @@ public class Game {
 		// TODO Auto-generated method stub
 		
 	}
-	public void addSoles(int i) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	public String positionToString(int col, int row) {
 		// TODO Auto-generated method stub
 		return null;

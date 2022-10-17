@@ -103,7 +103,7 @@ public class Controller {
 			
 			break;
 		case 'l':
-			System.out.println(this.game.listPlants() +"\n");
+			System.out.println(this.game.ListPlants() +"\n");
 			break;
 		case 'r':
 			game.reset();
