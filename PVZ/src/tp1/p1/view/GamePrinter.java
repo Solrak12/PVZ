@@ -29,11 +29,27 @@ public class GamePrinter {
 	private static final String IDENTED_ROW_BORDER = String.format("%n%s%s%n", MARGIN, ROW_BORDER);
 
 	private Game game;
+	
+	
+	String[][] board;
+	int X;
+	int Y;
 
-	public GamePrinter(Game game) {
+	public GamePrinter(Game game, int x, int y) {
 		this.game = game;
+		this.X =x;
+		this.Y =y;
+		board = new String[x][y];
 
 
+	}
+	public void RellenaTablero() {
+		for(int i =0; i<X;i++) {
+			for(int j=0;j<Y;j++) {
+				board[i][j] = " ";
+			}
+		}
+		System.out.println(this.toString());
 	}
 
 	/**
@@ -90,4 +106,12 @@ public class GamePrinter {
 
 		return buffer.toString();
 	}
+	public String[][] getBoard(){
+		return board;
+	}
+	public void setBoard(int x,int y,String draw) { // Para pintar los iconos
+		this.board[x][y] = draw;
+	}
+	
+	
 }

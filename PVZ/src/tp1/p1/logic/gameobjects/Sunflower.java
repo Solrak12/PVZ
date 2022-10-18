@@ -25,6 +25,9 @@ public class Sunflower {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public String drawS() {
+		return "S[" + this.vida + "]";
+	}
 	public int getX() {
 		return x;
 	}
@@ -42,6 +45,12 @@ public class Sunflower {
 	}
 	public int getCiclos() {
 		return ciclos;
+	}
+	public int getVida() {
+		return vida;
+	}
+	public void setVida(int vida) {
+		this.vida = vida;
 	}
 	
 }

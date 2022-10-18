@@ -23,6 +23,9 @@ public class Zombie {
 	}
 	
 	Game instancia;
+	public String drawZ() {
+		return "P[" + this.vida + "]";
+	}
 	public int getX() {
 		return x;
 	}

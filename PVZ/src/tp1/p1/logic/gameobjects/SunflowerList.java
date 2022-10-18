@@ -39,15 +39,19 @@ public class SunflowerList {
         }
         return soles;
     }
-	//busca si en una cuadrícula del tablero hay una Sunflower
-    public boolean SearchSunflower(int row, int col) {
-        boolean libre = true;
+	public void DamageSunflower(int pos) {
+        listaS[pos].vida--;
+    }
+
+    //busca si en una cuadrícula del tablero hay una Sunflower
+    public int SearchSunflower(int row, int col) {
+        int pos = -1;
         for(int i = 0; i < Sunflowercont; i++) {
             if(listaS[i].getX()==row && listaS[i].getY()==col) {
-                libre = false;
+                pos = i;
             }
         }
-        return libre;
+        return pos;
     }
 
     public void ActEndurance(SunflowerList lista) {

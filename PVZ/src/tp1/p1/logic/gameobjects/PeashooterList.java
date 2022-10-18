@@ -30,14 +30,19 @@ public class PeashooterList {
         Peashootercont--;
 		}
 	//busca si en una cuadrícula del tablero hay un Peashooter
-    public boolean SearchPeashooter(int row, int col) {
-        boolean libre = true;
+	public void DamagePeashooter(int pos) {
+        listaP[pos].vida--;
+    }
+
+    //busca si en una cuadrícula del tablero hay un Peashooter
+    public int SearchPeashooter(int row, int col) {
+        int pos = -1;
         for(int i = 0; i < Peashootercont; i++) {
             if(listaP[i].getX()==row && listaP[i].getY()==col) {
-                libre = false;
+                pos = i;
             }
         }
-        return libre;
+        return pos;
     }
 
     public void ActEndurance(PeashooterList lista) {
@@ -55,6 +60,7 @@ public class PeashooterList {
             }
         }
     }
+    
 
 	
 	}

@@ -23,7 +23,9 @@ public class Peashooter {
 		this.ciclos = 0;
 	}
 	
-
+	public String drawP() {
+		return "P[" + this.vida + "]";
+	}
 	public static Object getDescription() {
 		// TODO Auto-generated method stub
 		return null;

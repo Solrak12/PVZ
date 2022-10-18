@@ -33,7 +33,7 @@ public class Game {
 	ZombiesManager zombieManager;
 	public Game(long seed2, Level level2) { //Añadir parametros
 		this.soles =50;
-		this.contc =0;
+		this.contc =-1;
 		this.sunflowercont =0;
 		this.peashootercont=0;
 		this.Sunflowers = new SunflowerList();
@@ -77,13 +77,13 @@ public class Game {
 	            Peashooters.listaP[i].setCiclos(Peashooters.listaP[i].getCiclos());
 	        }
 
-	    //aquí se mueven los zombies
+	      //aquí se mueven los zombies
 
 	        for(int i=0; i<zombieManager.getRemainingZombies(); i++) {
 	            int x = zombies.listaZ[i].getX();
 	            int y = zombies.listaZ[i].getY();
 	            if(y-1 != 0) {
-	                if(Sunflowers.SearchSunflower(x,y-1) && Peashooters.SearchPeashooter(x, y-1)) {
+	                if(Sunflowers.SearchSunflower(x,y-1) !=-1 && Peashooters.SearchPeashooter(x, y-1) != -1) {
 	                    if(zombies.listaZ[i].getCiclos() % 2 == 0) {
 	                        //el zombie puede avanzar
 	                        zombies.listaZ[i].setY(y-1);
@@ -92,15 +92,26 @@ public class Game {
 	                    zombies.listaZ[i].setCiclos(zombies.listaZ[i].getCiclos()+1);
 	                }else {
 	                    //el zombie no puede avanzar y ataca
-
+	                    if(Sunflowers.SearchSunflower(x,y-1) != 0) {
+	                        Sunflowers.DamageSunflower(Sunflowers.SearchSunflower(x,y-1));
+	                        if(Sunflowers.listaS[Sunflowers.SearchSunflower(x, y-1)].getVida() == 0) {
+	                            Sunflowers.DeleteSunflower(x, y-1);
+	                        }
+	                    }else if(Peashooters.SearchPeashooter(x, y-1) != 0) {
+	                        Peashooters.DamagePeashooter(Peashooters.SearchPeashooter(x, y-1));
+	                        if(Peashooters.listaP[Peashooters.SearchPeashooter(x, y-1)].getVida() == 0) {
+	                            Peashooters.DeletePeashooter(x, y-1);
+	                        }
+	                    }
 	                }
 	            }else {
 	                //los zombies ganan
 	            }
+
+
+	        	}
 	        }
-
-
-	    }else {
+	       else {
 	        //las plantas ganan
 	    }
 	    }
@@ -144,7 +155,7 @@ public class Game {
 		if(isPositionEmptyP(pesh.getX(),pesh.getY())&& getSoles()>=50) {
 			setSoles(getSoles()-50);
 			Peashooters.AddPeashooter(pesh.getY(),pesh.getX());
-			//Dibujarlo en el tablero
+			this.gamePrinter.setBoard(pesh.getX(),pesh.getY(),pesh.drawP()); //Poner en el tablero la planta
 		}
 		
 	}
@@ -152,7 +163,7 @@ public class Game {
 		if(isPositionEmptyS(sunf.getX(),sunf.getY())&& getSoles()>=20) {
 			setSoles(getSoles()-20);
 			Sunflowers.AddSunflower(sunf.getY(),sunf.getX());
-			//Dibujarlo en tablero
+			this.gamePrinter.setBoard(sunf.getX(),sunf.getY(),sunf.drawS()); //Poner en el tablero la planta
 		}
 		
 		

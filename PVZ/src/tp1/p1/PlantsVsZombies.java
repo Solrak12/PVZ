@@ -7,6 +7,7 @@ import tp1.p1.control.Controller;
 import tp1.p1.control.Level;
 import tp1.p1.control.Level.Dificultad;
 import tp1.p1.logic.Game;
+import tp1.p1.logic.ZombiesManager;
 import tp1.p1.view.Messages;
 
 
@@ -26,6 +27,8 @@ public class PlantsVsZombies {
 	static int numberOfZombies;
 	static double zombieFrequency;
 	static Level level = new Level(numberOfZombies,zombieFrequency);
+	static boolean win =true;
+	static ZombiesManager zombieManager;
 	private static void usage() {
 		System.out.println(Messages.USAGE);
 		System.out.println(Messages.USAGE_LEVEL_PARAM);
@@ -87,6 +90,7 @@ public class PlantsVsZombies {
 		Game game = new Game(seed, level);
 		Scanner scanner = new Scanner(System.in);
 		Controller controller = new Controller(game, scanner);
+		
 		
 		
 		controller.run();
