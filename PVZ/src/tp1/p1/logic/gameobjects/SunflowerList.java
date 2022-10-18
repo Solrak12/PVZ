@@ -17,7 +17,17 @@ public class SunflowerList {
 		Sunflowercont++;
 	}
 	public void DeleteSunflower(int col, int row) {
-		
-	}
+        int pos=-1;
+        for(int i = 0 ; i<Sunflowercont; i++) {
+            if(row == listaS[i].x && col == listaS[i].y) {
+                pos = i;
+            }
+        }
+
+        for(int j=pos; j<Sunflowercont - 1 ;j++) {
+            listaS[j]=listaS[j+1];
+        }
+        Sunflowercont--;
+		}
 	
 }

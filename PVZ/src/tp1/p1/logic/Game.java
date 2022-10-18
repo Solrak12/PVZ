@@ -20,6 +20,8 @@ public class Game {
 	
 	int seed;
 	Level level;
+	int sunflowercont;
+	int peashootercont;
 	int contc;
 	int soles;
 	int numZombies;
@@ -32,6 +34,8 @@ public class Game {
 	public Game() { //Añadir parametros
 		this.soles =50;
 		this.contc =0;
+		this.sunflowercont =0;
+		this.peashootercont=0;
 		this.Sunflowers = new SunflowerList();
 		this.Peashooters = new PeashooterList();
 		this.zombies = new ZombieList();
@@ -68,19 +72,26 @@ public class Game {
 		
 		return 0;
 	}
-	private boolean isPositionEmpty(int Cols, int row) { //Usarlo para add zombie
+	private boolean isPositionEmptyS(int Cols, int row) { //Usarlo para add zombie
         boolean vacio = false;
-        for(int i = 0; i<numZombies ;i++) {
-            if(zombies.listaZ[i].getX() != row && zombies.listaZ[i].getY() != Cols) {
+        for(int i = 0; i<sunflowercont ;i++) {
+            if(Sunflowers.listaS[i].getX() != row && Sunflowers.listaS[i].getY() != Cols) {
                 vacio = true;
             }
         }
         return vacio;
     }
-	public void addZombie(Zombie z) {
-		
-	}
-	
+	private boolean isPositionEmptyP(int Cols, int row) { //Usarlo para add zombie
+        boolean vacio = false;
+        for(int i = 0; i<peashootercont ;i++) {
+            if(Peashooters.listaP[i].getX() != row && Peashooters.listaP[i].getY() != Cols) {
+                vacio = true;
+            }
+        }
+        return vacio;
+    }
+
+
 	public int getContCiclos() {
 		return contc;
 		
@@ -99,9 +110,17 @@ public class Game {
 	}
 	
 	public void addPeashooter(Peashooter pesh) { //Position empty para las plantas tambn
-		if(isPositionEmpty(pesh.getX(),pesh.getY())&& getSoles()>0) {
+		if(isPositionEmptyP(pesh.getX(),pesh.getY())&& getSoles()>=50) {
 			setSoles(getSoles()-50);
-			Peashooters.add(pesh);
+			Peashooters.AddPeashooter(pesh.getY(),pesh.getX());
+			//Dibujarlo en tablero
+		}
+		
+	}
+	public void addSunflower(Sunflower sunf) { //Position empty para las plantas tambn
+		if(isPositionEmptyS(sunf.getX(),sunf.getY())&& getSoles()>=20) {
+			setSoles(getSoles()-20);
+			Sunflowers.AddSunflower(sunf.getY(),sunf.getX());
 			//Dibujarlo en tablero
 		}
 		
@@ -113,12 +132,8 @@ public class Game {
 	public void setSoles(int Soles) {
 		this.soles = Soles;
 	}
-	public void addSunflower(Sunflower sunf) {
-		// TODO Auto-generated method stub
-		
-	}
 	
-	public String positionToString(int col, int row) {
+	public String positionToString(int col, int row) {//?
 		// TODO Auto-generated method stub
 		return null;
 	}

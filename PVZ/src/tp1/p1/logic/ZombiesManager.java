@@ -61,16 +61,17 @@ public class ZombiesManager {
 		int row = randomZombieRow();
 		return addZombie(row);
 	}
-
 	public boolean addZombie(int row) {
-		boolean canAdd = getRemainingZombies() > 0 && shouldAddZombie()
-				&& isPositionEmpty(Game.NUM_COLS, row);
+        boolean canAdd = getRemainingZombies() > 0 && shouldAddZombie()
+                && isPositionEmpty(Game.NUM_COLS, row);
 
-		if(canAdd) {
-			// TODO fill your code
-		}
-		return canAdd;
-	}
+        if(canAdd) {
+            //zombie added
+            zombies.listaZ[remainingZombies].setX(row);
+            remainingZombies--;
+        }
+        return canAdd;
+    }
 
 	public int getRemainingZombies() {
 		

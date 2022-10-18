@@ -5,6 +5,7 @@ import static tp1.p1.view.Messages.*;
 import java.util.Scanner;
 
 import tp1.p1.logic.Game;
+import tp1.p1.logic.ZombiesManager;
 import tp1.p1.logic.gameobjects.Peashooter;
 import tp1.p1.logic.gameobjects.Sunflower;
 import tp1.p1.logic.gameobjects.Zombie;
@@ -19,6 +20,8 @@ import tp1.utils.StringUtils;
 public class Controller {
 
 	private Game game;
+	
+	private ZombiesManager zombies;
 
 	private Scanner scanner;
 
@@ -89,8 +92,8 @@ public class Controller {
 						System.out.println("No tienes suficientes soles");
 				}
 				if(game.getZombiesLeft().zombieRandom() && game.getZombiesLeft().getRemainingZombies() > 0) {
-					Zombie z = new Zombie(game.getRandom(),7);
-					game.addZombie(z);
+					Zombie z = new Zombie(zombies.randomZombieRow(),7);
+					zombies.addZombie();
 				}
 				this.game.setContCiclos(this.game.getContCiclos()+1);
 				game.Update();
@@ -109,18 +112,17 @@ public class Controller {
 			game.reset();
 			break;
 		case 'h':
-			System.out.println("Add <plant> <col> <row>: add a plant in position (col, row)" + "\n" + "List: print the list of available plants"+"\n" +
-			"Reset: start a new game" + "\n" + "Help: print this help message" + "\n" + "Exit: terminate the program" + "\n" + "None | \"\": skips cycle");
+			System.out.println(Messages.HELP_LINES);
 			
 			break;
 		case 'e':
-			System.out.println(StringUtils.centre("GAME OVER",100));
+			System.out.println(StringUtils.centre("GAME OVER",80));
 			System.exit(0);
 			break;
 		case 'n':
 			if(game.getZombiesLeft().zombieRandom() && game.getZombiesLeft().getRemainingZombies() > 0) {
-				Zombie z = new Zombie(game.getRandom(),7);
-				game.addZombie(z);
+				Zombie z = new Zombie(zombies.randomZombieRow(),7);
+				zombies.addZombie();
 			}
 			this.game.setContCiclos(this.game.getContCiclos()+1);
 			game.Update();
