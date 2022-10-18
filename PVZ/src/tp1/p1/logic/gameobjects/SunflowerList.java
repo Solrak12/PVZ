@@ -39,5 +39,31 @@ public class SunflowerList {
         }
         return soles;
     }
+	//busca si en una cuadrícula del tablero hay una Sunflower
+    public boolean SearchSunflower(int row, int col) {
+        boolean libre = true;
+        for(int i = 0; i < Sunflowercont; i++) {
+            if(listaS[i].getX()==row && listaS[i].getY()==col) {
+                libre = false;
+            }
+        }
+        return libre;
+    }
+
+    public void ActEndurance(SunflowerList lista) {
+        for(int i = 0; i < Sunflowercont; i++) {
+            lista.listaS[i].endurance--;
+        }
+    }
+
+    public void EnoughEndurance(SunflowerList lista) {
+        for(int i = 0; i < Sunflowercont; i++) {
+            if(listaS[i].endurance==0) {
+                int x = listaS[i].getX();
+                int y = listaS[i].getY();
+                lista.DeleteSunflower(x, y);
+            }
+        }
+    }
 	
 }

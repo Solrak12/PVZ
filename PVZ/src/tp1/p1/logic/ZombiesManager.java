@@ -95,10 +95,12 @@ public class ZombiesManager {
                 }else {
                     //el zombie ha muerto
                     lista.DeleteZombie(col, row);
+                    remainingZombies--;
                 }
             }
         }
     }
+	
 
 	public int getRemainingZombies() {
 		

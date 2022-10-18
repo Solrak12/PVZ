@@ -101,7 +101,7 @@ public class Controller {
 			else 
 				System.out.println("No se puede poner");
 				
-			System.out.println(game.draw());
+			System.out.println(gamePrinter.getInfo());
 			System.out.println(this.game.getGamePrinter().toString());
 			
 			break;
@@ -126,7 +126,7 @@ public class Controller {
 			}
 			this.game.setContCiclos(this.game.getContCiclos()+1);
 			game.Update();
-			System.out.println(game.draw());
+			System.out.println(gamePrinter.getInfo());
 			System.out.println(this.game.getGamePrinter().toString());
 			break;
 		default :

@@ -29,6 +29,32 @@ public class PeashooterList {
         }
         Peashootercont--;
 		}
+	//busca si en una cuadrícula del tablero hay un Peashooter
+    public boolean SearchPeashooter(int row, int col) {
+        boolean libre = true;
+        for(int i = 0; i < Peashootercont; i++) {
+            if(listaP[i].getX()==row && listaP[i].getY()==col) {
+                libre = false;
+            }
+        }
+        return libre;
+    }
+
+    public void ActEndurance(PeashooterList lista) {
+        for(int i = 0; i < Peashootercont; i++) {
+            lista.listaP[i].endurance--;
+        }
+    }
+
+    public void EnoughEndurance(PeashooterList lista) {
+        for(int i = 0; i < Peashootercont; i++) {
+            if(listaP[i].endurance==0) {
+                int x = listaP[i].getX();
+                int y = listaP[i].getY();
+                lista.DeletePeashooter(x, y);
+            }
+        }
+    }
 
 	
 	}

@@ -2,6 +2,7 @@ package tp1.p1.view;
 
 import static tp1.utils.StringUtils.*;
 
+import tp1.p1.control.Level;
 import tp1.p1.logic.Game;
 import tp1.utils.StringUtils;
 
@@ -40,12 +41,12 @@ public class GamePrinter {
 	 * 
 	 * @return the string that represents the game status.
 	 */
-	protected String getInfo() {
-		StringBuilder buffer = new StringBuilder();
+	public String getInfo() {
+		
+		String draw ="";
+		draw += "Number of cycles: " + game.getContCiclos()+"\n"+"Sun coins: "+ game.getSoles()+"\n"+"Remaining zombies"+game.getZombiesLeft()+"\n";
 
-		// TODO fill your code
-
-		return buffer.toString();
+		return draw;
 	}
 
 	/**

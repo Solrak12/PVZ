@@ -44,25 +44,65 @@ public class Game {
 	}
 
 	public void Update(){
+	    if(zombieManager.getRemainingZombies() > 0) {
+
+	    //se actualiza el ciclo
 	    contc++;
 
-	    //aquí se generan los soles de cada ciclo
+
+	    //se comprueban la resistencia de las plantas
+	    Sunflowers.ActEndurance(Sunflowers);
+	    Sunflowers.EnoughEndurance(Sunflowers);
+	    Peashooters.ActEndurance(Peashooters);
+	    Peashooters.EnoughEndurance(Peashooters);
+
+
+	    //aquí se generan los soles
 
 	    soles += Sunflowers.addSoles(Sunflowers);
+	    //y se actualizan los ciclos
 	        for(int i=0; i<sunflowercont ; i++) {
 	            Sunflowers.listaS[i].setCiclos(Sunflowers.listaS[i].getCiclos() + 1);
 	        }
 
+
 	    //aquí atacan las plantas lanzaguisantes
 
-	    while(zombieManager.getRemainingZombies() > 0) {
-	        for(int i=0;i<Peashooters.Peashootercont;i++) {
+	        for(int i=0; i<Peashooters.Peashootercont; i++) {
 	            int x = Peashooters.listaP[i].getX();
 	            int y = zombieManager.MasIzquierda(zombies, x);
-	            zombieManager.DamageZombie(zombies, x, y);
-	        }
-	    }
+	            zombieManager.DamageZombie(zombies, x, y); 
 
+	            //aquí se actualizan los ciclos
+	            Peashooters.listaP[i].setCiclos(Peashooters.listaP[i].getCiclos());
+	        }
+
+	    //aquí se mueven los zombies
+
+	        for(int i=0; i<zombieManager.getRemainingZombies(); i++) {
+	            int x = zombies.listaZ[i].getX();
+	            int y = zombies.listaZ[i].getY();
+	            if(y-1 != 0) {
+	                if(Sunflowers.SearchSunflower(x,y-1) && Peashooters.SearchPeashooter(x, y-1)) {
+	                    if(zombies.listaZ[i].getCiclos() % 2 == 0) {
+	                        //el zombie puede avanzar
+	                        zombies.listaZ[i].setY(y-1);
+	                    }
+	                    //se actualizan los ciclos del zombie
+	                    zombies.listaZ[i].setCiclos(zombies.listaZ[i].getCiclos()+1);
+	                }else {
+	                    //el zombie no puede avanzar y ataca
+
+	                }
+	            }else {
+	                //los zombies ganan
+	            }
+	        }
+
+
+	    }else {
+	        //las plantas ganan
+	    }
 	    }
 	public void reset() {
 		this.Sunflowers = new SunflowerList();
@@ -104,7 +144,7 @@ public class Game {
 		if(isPositionEmptyP(pesh.getX(),pesh.getY())&& getSoles()>=50) {
 			setSoles(getSoles()-50);
 			Peashooters.AddPeashooter(pesh.getY(),pesh.getX());
-			//Dibujarlo en tablero
+			//Dibujarlo en el tablero
 		}
 		
 	}
@@ -132,13 +172,10 @@ public ZombiesManager getZombiesLeft() {
 		this.contc = ciclos;
 		
 	}
-	public String draw() {
-		System.out.println("Number of cycles: "+getContCiclos()+"\n" + "Sun coins: "+this.getSoles()+"\n"+"Remaining zombies: "+ getZombiesLeft()+"\n");
-		return null;
-	}
+	
 	public GamePrinter getGamePrinter() {
 		// TODO Auto-generated method stub
-		return null;
+		return gamePrinter;
 	}
 	
 	
