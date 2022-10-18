@@ -14,11 +14,11 @@ public class Level {
 		INSANE;
 	}
 
-	private int numberOfZombies;
+	private static int numberOfZombies;
 	
-	private double zombieFrequency;
+	private static double zombieFrequency;
 
-	private Level(int numberOfZombies, double zombieFrequency) {
+	public Level(int numberOfZombies, double zombieFrequency) {
 		this.numberOfZombies = numberOfZombies;
 		this.zombieFrequency = zombieFrequency;
 	}
@@ -31,7 +31,7 @@ public class Level {
 	 * @param inputString string to parse
 	 * @return the parsed {@link Level} or <code>null</code> if none match.
 	 */
-	public static Level valueOfIgnoreCase(String inputString) {
+	/*public static Level valueOfIgnoreCase(String inputString) {
 		for (Level level : Level.values()) {
 			if (level.name().equalsIgnoreCase(inputString)) {
 				return level;
@@ -45,7 +45,8 @@ public class Level {
 	}
 
 	private static Level[] values() {
-
+		
+		
 	}
 
 	/**
@@ -57,7 +58,7 @@ public class Level {
 	 */
 	
 
-	public static String all(String separator) {
+	/*public static String all(String separator) {
 		StringBuilder buffer = new StringBuilder();
 		int levelCount = 0;
 		for (Level level : Level.values()) {
@@ -83,8 +84,9 @@ public class Level {
 		int seed = valor.nextInt();
 		return seed;
 	}
+	
 
-	double getZombieFrequency(String valor) {
+	/*double getZombieFrequency(String valor) {
 		if(valor=="EASY") {
 			zombieFrequency = 0.1;
 		}else if(valor == "HARD") {
@@ -103,5 +105,5 @@ public class Level {
 			numberOfZombies = 10;
 		}
 		return numberOfZombies;
-	}
+	}*/
 }

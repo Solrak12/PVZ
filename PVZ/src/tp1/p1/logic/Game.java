@@ -30,8 +30,8 @@ public class Game {
 	ZombieList zombies;
 	SunflowerList Sunflowers;
 	PeashooterList Peashooters;
-	ZombiesManager zombieRemain;
-	public Game() { //Añadir parametros
+	ZombiesManager zombieManager;
+	public Game(long seed2, Level level2) { //Añadir parametros
 		this.soles =50;
 		this.contc =0;
 		this.sunflowercont =0;
@@ -44,13 +44,31 @@ public class Game {
 	}
 
 	public void Update(){
-		
-	}
+	    contc++;
+
+	    //aquí se generan los soles de cada ciclo
+
+	    soles += Sunflowers.addSoles(Sunflowers);
+	        for(int i=0; i<sunflowercont ; i++) {
+	            Sunflowers.listaS[i].setCiclos(Sunflowers.listaS[i].getCiclos() + 1);
+	        }
+
+	    //aquí atacan las plantas lanzaguisantes
+
+	    while(zombieManager.getRemainingZombies() > 0) {
+	        for(int i=0;i<Peashooters.Peashootercont;i++) {
+	            int x = Peashooters.listaP[i].getX();
+	            int y = zombieManager.MasIzquierda(zombies, x);
+	            zombieManager.DamageZombie(zombies, x, y);
+	        }
+	    }
+
+	    }
 	public void reset() {
 		this.Sunflowers = new SunflowerList();
 		this.Peashooters = new PeashooterList();
 		this.zombies = new ZombieList();
-		this.zombieRemain.setRemainingZombies(numZombies);
+		this.zombieManager.setRemainingZombies(numZombies);
 		
 		this.contc =0;
 		this.soles =50;
@@ -61,18 +79,9 @@ public class Game {
 		System.out.println(Messages.PEASHOOTER_DESCRIPTION +"\n"+Messages.SUNFLOWER_DESCRIPTION);
 		return null;
 	}
-	public ZombiesManager getZombiesLeft() {
-		
-		return zombieRemain;
-	}
-	public void setZombiesLeft(ZombiesManager zombiesRemain) {
-		this.zombieRemain = zombiesRemain;
-	}
-	public int getRandom() { //Salida random del zombie
-		
-		return 0;
-	}
-	private boolean isPositionEmptyS(int Cols, int row) { //Usarlo para add zombie
+	
+	
+	private boolean isPositionEmptyS(int Cols, int row) {
         boolean vacio = false;
         for(int i = 0; i<sunflowercont ;i++) {
             if(Sunflowers.listaS[i].getX() != row && Sunflowers.listaS[i].getY() != Cols) {
@@ -81,7 +90,7 @@ public class Game {
         }
         return vacio;
     }
-	private boolean isPositionEmptyP(int Cols, int row) { //Usarlo para add zombie
+	private boolean isPositionEmptyP(int Cols, int row) { 
         boolean vacio = false;
         for(int i = 0; i<peashootercont ;i++) {
             if(Peashooters.listaP[i].getX() != row && Peashooters.listaP[i].getY() != Cols) {
@@ -91,7 +100,30 @@ public class Game {
         return vacio;
     }
 
-
+	public void addPeashooter(Peashooter pesh) { //Position empty para las plantas tambn
+		if(isPositionEmptyP(pesh.getX(),pesh.getY())&& getSoles()>=50) {
+			setSoles(getSoles()-50);
+			Peashooters.AddPeashooter(pesh.getY(),pesh.getX());
+			//Dibujarlo en tablero
+		}
+		
+	}
+	public void addSunflower(Sunflower sunf) { //Position empty para las plantas tambn
+		if(isPositionEmptyS(sunf.getX(),sunf.getY())&& getSoles()>=20) {
+			setSoles(getSoles()-20);
+			Sunflowers.AddSunflower(sunf.getY(),sunf.getX());
+			//Dibujarlo en tablero
+		}
+		
+		
+	}
+public ZombiesManager getZombiesLeft() {
+		
+		return zombieManager;
+	}
+	public void setZombiesLeft(ZombiesManager zombiesRemain) {
+		this.zombieManager = zombiesRemain;
+	}
 	public int getContCiclos() {
 		return contc;
 		
@@ -109,22 +141,7 @@ public class Game {
 		return null;
 	}
 	
-	public void addPeashooter(Peashooter pesh) { //Position empty para las plantas tambn
-		if(isPositionEmptyP(pesh.getX(),pesh.getY())&& getSoles()>=50) {
-			setSoles(getSoles()-50);
-			Peashooters.AddPeashooter(pesh.getY(),pesh.getX());
-			//Dibujarlo en tablero
-		}
-		
-	}
-	public void addSunflower(Sunflower sunf) { //Position empty para las plantas tambn
-		if(isPositionEmptyS(sunf.getX(),sunf.getY())&& getSoles()>=20) {
-			setSoles(getSoles()-20);
-			Sunflowers.AddSunflower(sunf.getY(),sunf.getX());
-			//Dibujarlo en tablero
-		}
-		
-	}
+	
 	public int getSoles() { //?
 		return soles;
 		

@@ -71,6 +71,33 @@ public class ZombiesManager {
             remainingZombies--;
         }
         return canAdd;
+       
+    }
+	public int MasIzquierda(ZombieList lista, int row) {
+        int aux = 0;
+        for(int i = 0 ; i<remainingZombies;i++) {
+            if(lista.listaZ[i].getX()==row) {
+                aux = lista.listaZ[i].getY();
+                if(lista.listaZ[i].getY() < aux) {
+                aux = lista.listaZ[i].getY();
+                }
+            }
+        }
+        return aux;
+    }
+	public void DamageZombie(ZombieList lista, int row, int col) {
+        for(int i = 0; i<remainingZombies;i++) {
+            if(lista.listaZ[i].getX() == row && lista.listaZ[i].getY() == col) {
+                if(lista.listaZ[i].getVida() > 0) {
+                    lista.listaZ[i].setVida(lista.listaZ[i].getVida()-1);
+                }else if(lista.listaZ[i].getVida() > 0){
+                    //el zombie sigue vivo
+                }else {
+                    //el zombie ha muerto
+                    lista.DeleteZombie(col, row);
+                }
+            }
+        }
     }
 
 	public int getRemainingZombies() {

@@ -4,8 +4,8 @@ import tp1.p1.logic.Game;
 
 public class Zombie {
 	
-	private int x;
-	private int y;
+	public int x;
+	public int y;
 	private int endurance;
 	private int vida;
 	private int speed;

@@ -28,6 +28,16 @@ public class SunflowerList {
             listaS[j]=listaS[j+1];
         }
         Sunflowercont--;
-		}
+	}
+	public int addSoles(SunflowerList sunflowers) {
+        //soles producidos
+        int soles = 0;
+        for(int i = 0; i<sunflowers.Sunflowercont ; i++) {
+            if(sunflowers.listaS[i].getCiclos() % 3 == 0) {
+                soles += 10;
+            }
+        }
+        return soles;
+    }
 	
 }

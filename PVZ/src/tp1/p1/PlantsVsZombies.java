@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 import tp1.p1.control.Controller;
 import tp1.p1.control.Level;
+import tp1.p1.control.Level.Dificultad;
 import tp1.p1.logic.Game;
 import tp1.p1.view.Messages;
 
@@ -19,6 +20,12 @@ public class PlantsVsZombies {
 	/**
 	 * Show application help message
 	 */
+	
+	static Level.Dificultad dificultad;
+	static String valor = String.valueOf(dificultad);
+	static int numberOfZombies;
+	static double zombieFrequency;
+	static Level level = new Level(numberOfZombies,zombieFrequency);
 	private static void usage() {
 		System.out.println(Messages.USAGE);
 		System.out.println(Messages.USAGE_LEVEL_PARAM);
@@ -39,11 +46,25 @@ public class PlantsVsZombies {
 			return;
 		}
 
-		Level level = Level.valueOfIgnoreCase(args[0]);
-		if (level == null) {
+		
+		if (valor == null) { //Valueof cambiado
 			System.out.println(Messages.ALLOWED_LEVELS);
 			usage();
 			return;
+		}
+		
+		
+		if(valor.equals(Dificultad.EASY)) {
+			numberOfZombies = 3;
+			zombieFrequency =0.1;
+		}
+		else if(valor.equals(Dificultad.HARD)){
+			numberOfZombies = 5;
+			zombieFrequency =0.2;
+		}
+		else if(valor.equals(Dificultad.INSANE)) {
+			numberOfZombies =10;
+			zombieFrequency = 0.3;
 		}
 
 		long seed = System.currentTimeMillis() % 1000;
@@ -60,7 +81,7 @@ public class PlantsVsZombies {
 		}
 
 		System.out.println(Messages.WELCOME);
-		System.out.println(String.format(Messages.CONFIGURED_LEVEL, level.name()));
+		System.out.println(String.format(Messages.CONFIGURED_LEVEL, valor));
 		System.out.println(String.format(Messages.CONFIGURED_SEED, seed));
 
 		Game game = new Game(seed, level);
