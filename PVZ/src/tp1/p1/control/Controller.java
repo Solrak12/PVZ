@@ -26,11 +26,13 @@ public class Controller {
 	private Scanner scanner;
 
 	private GamePrinter gamePrinter;
+	
+	private int X,Y;
 
 	public Controller(Game game, Scanner scanner) {
 		this.game = game;
 		this.scanner = scanner;
-		this.gamePrinter = new GamePrinter(game);
+		this.gamePrinter = new GamePrinter(game,X,Y);
 	}
 
 	/**
@@ -65,16 +67,17 @@ public class Controller {
 	/**
 	 * Runs the game logic.
 	 */
-	public void run() {
+	public void run() { //MENU
 		char op = scanner.next().charAt(0);
 		String[] word = null;
 		System.out.println("Command >");
 		switch(op) {
-		case 'a':
+		case 'a': //AÑADE PLNTAS
 			int x = Integer.parseInt(word[2]);
 			int y =Integer.parseInt(word[3]);
+			if(x<0||x>4&&y<0||y>7) { //SI SE PONE DENTRO DEL TABLERO
 			if(word[1].equals("p") || word[1].equals("s") || word[1].equals("Peashooter")|| word[1].equals("Sunflower")) {
-				if(word[1].equalsIgnoreCase("p")||word[1].equalsIgnoreCase("Peashooter")) {
+				if(word[1].equalsIgnoreCase("p")||word[1].equalsIgnoreCase("Peashooter")) { //SI SE ESCRIBE ESAS LETRAS CORRECTAS ACCIONA
 					if(game.getSoles() >=50) {
 						Peashooter pesh = new Peashooter(x,y);
 						game.addPeashooter(pesh);
@@ -91,7 +94,7 @@ public class Controller {
 					else
 						System.out.println("No tienes suficientes soles");
 				}
-				if(game.getZombiesLeft().zombieRandom() && game.getZombiesLeft().getRemainingZombies() > 0) {
+				if(game.getZombiesLeft().shouldAddZombie() && game.getZombiesLeft().getRemainingZombies() > 0) { //PASA EL TURNO Y AÑADE UN ZOMBIE
 					Zombie z = new Zombie(zombies.randomZombieRow(),7);
 					zombies.addZombie();
 				}
@@ -100,27 +103,27 @@ public class Controller {
 			}
 			else 
 				System.out.println("No se puede poner");
-				
+			}
 			System.out.println(gamePrinter.getInfo());
 			System.out.println(this.game.getGamePrinter().toString());
 			
 			break;
-		case 'l':
+		case 'l': //MUESTRA LA LISTA DE PLANTAS
 			System.out.println(this.game.ListPlants() +"\n");
 			break;
-		case 'r':
+		case 'r': //RESETEA LA PARTIDA
 			game.reset();
 			break;
-		case 'h':
+		case 'h': //COMANDOS DE AYUDA
 			System.out.println(Messages.HELP_LINES);
 			
 			break;
-		case 'e':
-			System.out.println(StringUtils.centre("GAME OVER",80));
+		case 'e'://SALE DEL JUEGO
+			System.out.println("GAME OVER");
 			System.exit(0);
 			break;
-		case 'n':
-			if(game.getZombiesLeft().zombieRandom() && game.getZombiesLeft().getRemainingZombies() > 0) {
+		case 'n'://PASA TURNO 
+			if(game.getZombiesLeft().shouldAddZombie() && game.getZombiesLeft().getRemainingZombies() > 0) {
 				Zombie z = new Zombie(zombies.randomZombieRow(),7);
 				zombies.addZombie();
 			}

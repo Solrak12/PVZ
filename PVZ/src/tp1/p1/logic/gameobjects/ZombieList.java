@@ -8,7 +8,7 @@ public class ZombieList {
 	
 	
 	public ZombieList() {
-		listaZ = new Zombie[getNumberOfZombies()]; //Numero de zombies
+		listaZ = new Zombie[32]; //Numero de zombies
 	}
 	
 	public ZombieList(int remainingZombies) {

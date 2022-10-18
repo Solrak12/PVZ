@@ -10,12 +10,13 @@ public class PeashooterList {
 	}
 	
 	//methods
-	
+	//Añade un guisante
 	public void AddPeashooter(int col, int row) {
 		listaP[Peashootercont].x=row;
 		listaP[Peashootercont].y=col;
 		Peashootercont++;
 	}
+	//Elimina el guisante de la lista
 	public void DeletePeashooter(int col, int row) {
         int pos=-1;
         for(int i = 0 ; i<Peashootercont; i++) {

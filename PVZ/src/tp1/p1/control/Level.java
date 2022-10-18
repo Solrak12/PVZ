@@ -6,24 +6,26 @@ import java. util. Scanner;
  * Represents the allowed levels in the game.
  *
  */
-public class Level {
-	
-	public enum Dificultad{
-		EASY,
-		HARD,
-		INSANE;
-	}
+public enum Level {
 
-	private static int numberOfZombies;
-	
-	private static double zombieFrequency;
+	EASY(3, 0.1), HARD(5, 0.2), INSANE(10, 0.3);
 
-	public Level(int numberOfZombies, double zombieFrequency) {
+	private int numberOfZombies;
+
+	private double zombieFrequency;
+
+	private Level(int numberOfZombies, double zombieFrequency) {
 		this.numberOfZombies = numberOfZombies;
 		this.zombieFrequency = zombieFrequency;
 	}
-	
-	// TODO fill your code
+
+	public int getNumberOfZombies() {
+		return numberOfZombies;
+	}
+
+	public double getZombieFrequency() {
+		return zombieFrequency;
+	}
 
 	/**
 	 * Parse an string and return any matching level
@@ -31,7 +33,7 @@ public class Level {
 	 * @param inputString string to parse
 	 * @return the parsed {@link Level} or <code>null</code> if none match.
 	 */
-	/*public static Level valueOfIgnoreCase(String inputString) {
+	public static Level valueOfIgnoreCase(String inputString) {
 		for (Level level : Level.values()) {
 			if (level.name().equalsIgnoreCase(inputString)) {
 				return level;
@@ -40,25 +42,16 @@ public class Level {
 		return null;
 	}
 
-	private String name() {
-		
-	}
-
-	private static Level[] values() {
-		
-		
-	}
-
 	/**
-	 * Returns a string representation of all the levels joined with <code>separator</code>
+	 * Returns a string representation of all the levels joined with
+	 * <code>separator</code>
 	 * 
 	 * @param separator String used as separator
 	 * 
-	 * @return the string resulted from joining all levels using <code>separator</code>
+	 * @return the string resulted from joining all levels using
+	 *         <code>separator</code>
 	 */
-	
-
-	/*public static String all(String separator) {
+	public static String all(String separator) {
 		StringBuilder buffer = new StringBuilder();
 		int levelCount = 0;
 		for (Level level : Level.values()) {
@@ -70,20 +63,7 @@ public class Level {
 		}
 		return buffer.toString();
 	}
-
-
-	
-	public String getLevel() {
-		Scanner valor = new Scanner(System.in);
-		String nivel = valor.next();
-		return nivel;
-	}
-	
-	public int getSeed() {
-		Scanner valor = new Scanner(System.in);
-		int seed = valor.nextInt();
-		return seed;
-	}
+}
 	
 
 	/*double getZombieFrequency(String valor) {
@@ -106,4 +86,3 @@ public class Level {
 		}
 		return numberOfZombies;
 	}*/
-}

@@ -10,7 +10,7 @@ public class Sunflower {
 	int damage;
 	int vida;
 	int ciclos;
-	
+	//VALORES
 	public Sunflower(int x, int y) {
 		this.x =x;
 		this.y =y;
@@ -25,9 +25,11 @@ public class Sunflower {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	//ICONO
 	public String drawS() {
 		return "S[" + this.vida + "]";
 	}
+	//GETTERS SETTERS
 	public int getX() {
 		return x;
 	}

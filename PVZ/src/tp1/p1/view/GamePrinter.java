@@ -34,6 +34,7 @@ public class GamePrinter {
 	String[][] board;
 	int X;
 	int Y;
+	
 
 	public GamePrinter(Game game, int x, int y) {
 		this.game = game;
@@ -42,7 +43,7 @@ public class GamePrinter {
 		board = new String[x][y];
 
 
-	}
+	}//Matriz de tablero y lo pinta
 	public void RellenaTablero() {
 		for(int i =0; i<X;i++) {
 			for(int j=0;j<Y;j++) {

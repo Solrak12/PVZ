@@ -115,7 +115,7 @@ public class Game {
 	        //las plantas ganan
 	    }
 	    }
-	public void reset() {
+	public void reset() { //VUELVE TODO AL PRINCIPIO
 		this.Sunflowers = new SunflowerList();
 		this.Peashooters = new PeashooterList();
 		this.zombies = new ZombieList();
@@ -123,7 +123,7 @@ public class Game {
 		
 		this.contc =0;
 		this.soles =50;
-		this.gamePrinter = new GamePrinter(this);
+		this.gamePrinter = new GamePrinter(this,4,8);
 	}
 	
 	public String ListPlants() { //Muestra las plantas
@@ -132,7 +132,7 @@ public class Game {
 	}
 	
 	
-	private boolean isPositionEmptyS(int Cols, int row) {
+	private boolean isPositionEmptyS(int Cols, int row) { //COMPRUEBA POSICION DE LA CASILLA PARA GIRASOLES
         boolean vacio = false;
         for(int i = 0; i<sunflowercont ;i++) {
             if(Sunflowers.listaS[i].getX() != row && Sunflowers.listaS[i].getY() != Cols) {
@@ -141,7 +141,7 @@ public class Game {
         }
         return vacio;
     }
-	private boolean isPositionEmptyP(int Cols, int row) { 
+	private boolean isPositionEmptyP(int Cols, int row) { //COMPRUEBA POSICION DE LA CASILLA PARA GUISANTES
         boolean vacio = false;
         for(int i = 0; i<peashootercont ;i++) {
             if(Peashooters.listaP[i].getX() != row && Peashooters.listaP[i].getY() != Cols) {
@@ -151,7 +151,7 @@ public class Game {
         return vacio;
     }
 
-	public void addPeashooter(Peashooter pesh) { //Position empty para las plantas tambn
+	public void addPeashooter(Peashooter pesh) { //PONE EL GUISANTE
 		if(isPositionEmptyP(pesh.getX(),pesh.getY())&& getSoles()>=50) {
 			setSoles(getSoles()-50);
 			Peashooters.AddPeashooter(pesh.getY(),pesh.getX());
@@ -159,7 +159,7 @@ public class Game {
 		}
 		
 	}
-	public void addSunflower(Sunflower sunf) { //Position empty para las plantas tambn
+	public void addSunflower(Sunflower sunf) { //PONE EL GIRASOL
 		if(isPositionEmptyS(sunf.getX(),sunf.getY())&& getSoles()>=20) {
 			setSoles(getSoles()-20);
 			Sunflowers.AddSunflower(sunf.getY(),sunf.getX());
@@ -168,6 +168,7 @@ public class Game {
 		
 		
 	}
+	//SETTERS GETTERS
 public ZombiesManager getZombiesLeft() {
 		
 		return zombieManager;
@@ -185,10 +186,9 @@ public ZombiesManager getZombiesLeft() {
 	}
 	
 	public GamePrinter getGamePrinter() {
-		// TODO Auto-generated method stub
+		
 		return gamePrinter;
 	}
-	
 	
 	public int getSoles() { //?
 		return soles;
@@ -197,9 +197,10 @@ public ZombiesManager getZombiesLeft() {
 	public void setSoles(int Soles) {
 		this.soles = Soles;
 	}
-	
-	public String positionToString(int col, int row) {//?
-		// TODO Auto-generated method stub
+
+	public String positionToString(int col, int row) {
 		return null;
 	}
+	
+	
 }

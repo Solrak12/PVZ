@@ -26,7 +26,7 @@ public class ZombiesManager {
 		this.game = game;
 		this.level = level;
 		this.rand = rand;
-		this.remainingZombies = level.getNumberOfZombies(level);
+		this.remainingZombies = level.getNumberOfZombies();
 		this.zombies = new ZombieList(this.remainingZombies);
 	}
 
@@ -35,10 +35,10 @@ public class ZombiesManager {
 	 * 
 	 * @return <code>true</code> if a zombie should be added to the game.
 	 */
-	private boolean shouldAddZombie() {
+	public boolean shouldAddZombie() {
 		return rand.nextDouble() < level.getZombieFrequency();
 	}
-	private boolean isPositionEmpty(int Cols, int row) {
+	private boolean isPositionEmpty(int Cols, int row) { //SI LA CASILLA ESTA VACIA
         boolean vacio = false;
         for(int i = 0; i<remainingZombies ;i++) {
             if(zombies.listaZ[i].getX() != row && zombies.listaZ[i].getY() != Cols) {
@@ -57,7 +57,7 @@ public class ZombiesManager {
 		return rand.nextInt(Game.NUM_ROWS);
 	}
 	
-	public boolean addZombie() {
+	public boolean addZombie() { //AÑADE EL ZOMBIE
 		int row = randomZombieRow();
 		return addZombie(row);
 	}
@@ -73,7 +73,7 @@ public class ZombiesManager {
         return canAdd;
        
     }
-	public int MasIzquierda(ZombieList lista, int row) {
+	public int MasIzquierda(ZombieList lista, int row) { //PARA EL DISPARDO DE GUISANTES COMPRUEBA EL MAS CERCANO 
         int aux = 0;
         for(int i = 0 ; i<remainingZombies;i++) {
             if(lista.listaZ[i].getX()==row) {
@@ -85,7 +85,7 @@ public class ZombiesManager {
         }
         return aux;
     }
-	public void DamageZombie(ZombieList lista, int row, int col) {
+	public void DamageZombie(ZombieList lista, int row, int col) { //HACE DAÑO
         for(int i = 0; i<remainingZombies;i++) {
             if(lista.listaZ[i].getX() == row && lista.listaZ[i].getY() == col) {
                 if(lista.listaZ[i].getVida() > 0) {
@@ -110,11 +110,8 @@ public class ZombiesManager {
 		this.remainingZombies = numZ;
 	}
 
-	public boolean zombieRandom() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 
-	// TODO fill your code
+	
 }

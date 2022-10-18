@@ -22,11 +22,9 @@ public class PlantsVsZombies {
 	 * Show application help message
 	 */
 	
-	static Level.Dificultad dificultad;
-	static String valor = String.valueOf(dificultad);
 	static int numberOfZombies;
 	static double zombieFrequency;
-	static Level level = new Level(numberOfZombies,zombieFrequency);
+	static Level level;
 	static boolean win =true;
 	static ZombiesManager zombieManager;
 	private static void usage() {
@@ -49,25 +47,11 @@ public class PlantsVsZombies {
 			return;
 		}
 
-		
-		if (valor == null) { //Valueof cambiado
+		Level level = Level.valueOfIgnoreCase(args[0]);
+		if (level == null) {
 			System.out.println(Messages.ALLOWED_LEVELS);
 			usage();
 			return;
-		}
-		
-		
-		if(valor.equals(Dificultad.EASY)) {
-			numberOfZombies = 3;
-			zombieFrequency =0.1;
-		}
-		else if(valor.equals(Dificultad.HARD)){
-			numberOfZombies = 5;
-			zombieFrequency =0.2;
-		}
-		else if(valor.equals(Dificultad.INSANE)) {
-			numberOfZombies =10;
-			zombieFrequency = 0.3;
 		}
 
 		long seed = System.currentTimeMillis() % 1000;
@@ -84,13 +68,12 @@ public class PlantsVsZombies {
 		}
 
 		System.out.println(Messages.WELCOME);
-		System.out.println(String.format(Messages.CONFIGURED_LEVEL, valor));
+		System.out.println(String.format(Messages.CONFIGURED_LEVEL, level.name()));
 		System.out.println(String.format(Messages.CONFIGURED_SEED, seed));
 
 		Game game = new Game(seed, level);
 		Scanner scanner = new Scanner(System.in);
 		Controller controller = new Controller(game, scanner);
-		
 		
 		
 		controller.run();

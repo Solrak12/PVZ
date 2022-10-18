@@ -26,6 +26,7 @@ public class Zombie {
 	public String drawZ() {
 		return "P[" + this.vida + "]";
 	}
+	//SETTERS GETTERS
 	public int getX() {
 		return x;
 	}
@@ -50,7 +51,7 @@ public class Zombie {
 	public void setVida(int vida) {
 		this.vida = vida;
 	}
-	public int getdaño() { //LLamar a hacer daño?
+	public int getdaño() { 
 		return damage;
 	}
 	public void setDaño(int daño) {

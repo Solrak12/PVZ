@@ -12,7 +12,7 @@ public class Peashooter {
 	int vida;
 	int ciclos;
 	
-	
+	//Valores
 	public Peashooter(int x, int y){
 		this.x =x;
 		this.y =y;
@@ -30,6 +30,7 @@ public class Peashooter {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	//GETTERS SETTERS
 	public int getX() {
 		return x;
 	}
