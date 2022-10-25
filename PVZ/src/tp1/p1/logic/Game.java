@@ -18,19 +18,19 @@ public class Game {
 	public final static int NUM_COLS = 8;
 	public final static int NUM_ROWS = 4;
 	
-	int seed;
-	Level level;
-	int sunflowercont;
-	int peashootercont;
-	int contc;
-	int soles;
-	int numZombies;
-	Random rand;
-	GamePrinter gamePrinter;
-	ZombieList zombies;
-	SunflowerList Sunflowers;
-	PeashooterList Peashooters;
-	ZombiesManager zombieManager;
+	private int seed;
+	private Level level;
+	private int sunflowercont;
+	private int peashootercont;
+	private int contc;
+	private int soles;
+	private int numZombies;
+	private Random rand;
+	private GamePrinter gamePrinter;
+	private ZombieList zombies;
+	private SunflowerList Sunflowers;
+	private PeashooterList Peashooters;
+	private ZombiesManager zombieManager;
 	public Game(long seed2, Level level2) { //Añadir parametros
 		this.soles =50;
 		this.contc =-1;

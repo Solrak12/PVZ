@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import tp1.p1.control.Controller;
 import tp1.p1.control.Level;
-import tp1.p1.control.Level.Dificultad;
 import tp1.p1.logic.Game;
 import tp1.p1.logic.ZombiesManager;
 import tp1.p1.view.Messages;
@@ -22,11 +21,11 @@ public class PlantsVsZombies {
 	 * Show application help message
 	 */
 	
-	static int numberOfZombies;
-	static double zombieFrequency;
-	static Level level;
-	static boolean win =true;
-	static ZombiesManager zombieManager;
+	private static int numberOfZombies;
+	private static double zombieFrequency;
+	private static Level level;
+	private static boolean win =true;
+	private static ZombiesManager zombieManager;
 	private static void usage() {
 		System.out.println(Messages.USAGE);
 		System.out.println(Messages.USAGE_LEVEL_PARAM);

@@ -19,7 +19,7 @@ public class SunflowerList {
 	public void DeleteSunflower(int col, int row) {
         int pos=-1;
         for(int i = 0 ; i<Sunflowercont; i++) {
-            if(row == listaS[i].x && col == listaS[i].y) {
+            if(row == listaS[i].getX() && col == listaS[i].getY()) {
                 pos = i;
             }
         }
@@ -56,13 +56,13 @@ public class SunflowerList {
 
     public void ActEndurance(SunflowerList lista) {
         for(int i = 0; i < Sunflowercont; i++) {
-            lista.listaS[i].endurance--;
+            lista.listaS[i].setEndurance(lista.listaS[i].getEndurance() - 1);
         }
     }
 
     public void EnoughEndurance(SunflowerList lista) {
         for(int i = 0; i < Sunflowercont; i++) {
-            if(listaS[i].endurance==0) {
+            if(listaS[i].getEndurance()==0) {
                 int x = listaS[i].getX();
                 int y = listaS[i].getY();
                 lista.DeleteSunflower(x, y);

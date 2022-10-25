@@ -31,9 +31,9 @@ public class GamePrinter {
 	private Game game;
 	
 	
-	String[][] board;
-	int X;
-	int Y;
+	private String[][] board;
+	private int X;
+	private int Y;
 	
 
 	public GamePrinter(Game game, int x, int y) {

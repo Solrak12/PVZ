@@ -20,7 +20,7 @@ public class PeashooterList {
 	public void DeletePeashooter(int col, int row) {
         int pos=-1;
         for(int i = 0 ; i<Peashootercont; i++) {
-            if(row == listaP[i].x && col == listaP[i].y) {
+            if(row == listaP[i].getX() && col == listaP[i].getY()) {
                 pos = i;
             }
         }
@@ -48,13 +48,13 @@ public class PeashooterList {
 
     public void ActEndurance(PeashooterList lista) {
         for(int i = 0; i < Peashootercont; i++) {
-            lista.listaP[i].endurance--;
+            lista.listaP[i].setEndurance(lista.listaP[i].getEndurance() - 1);
         }
     }
 
     public void EnoughEndurance(PeashooterList lista) {
         for(int i = 0; i < Peashootercont; i++) {
-            if(listaP[i].endurance==0) {
+            if(listaP[i].getEndurance()==0) {
                 int x = listaP[i].getX();
                 int y = listaP[i].getY();
                 lista.DeletePeashooter(x, y);

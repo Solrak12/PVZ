@@ -3,19 +3,20 @@ package tp1.p1.logic.gameobjects;
 import tp1.p1.logic.Game;
 
 public class Sunflower {
-	int x,y;
-	Game instancia;
-	int cost;
-	int endurance;
-	int damage;
+	int x;
+	int y;
+	private Game instancia;
+	private int cost;
+	private int endurance;
+	private int damage;
 	int vida;
-	int ciclos;
+	private int ciclos;
 	//VALORES
 	public Sunflower(int x, int y) {
 		this.x =x;
 		this.y =y;
 		this.cost = 20;
-		this.endurance = 1;
+		this.setEndurance(1);
 		this.damage = 0;
 		this.vida =1;
 		this.ciclos =0;
@@ -53,6 +54,14 @@ public class Sunflower {
 	}
 	public void setVida(int vida) {
 		this.vida = vida;
+	}
+
+	public int getEndurance() {
+		return endurance;
+	}
+
+	public void setEndurance(int endurance) {
+		this.endurance = endurance;
 	}
 	
 }

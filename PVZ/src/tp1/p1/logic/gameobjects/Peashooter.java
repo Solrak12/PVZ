@@ -4,13 +4,14 @@ import tp1.p1.control.*;
 import tp1.p1.logic.Game;
 
 public class Peashooter {
-	int x,y;
-	Game instancia;
-	int cost;
-	int damage;
-	int endurance;
+	int x;
+	int y;
+	private Game instancia;
+	private int cost;
+	private int damage;
+	private int endurance;
 	int vida;
-	int ciclos;
+	private int ciclos;
 	
 	//Valores
 	public Peashooter(int x, int y){
@@ -18,7 +19,7 @@ public class Peashooter {
 		this.y =y;
 		this.cost = 50;
 		this.damage = 1;
-		this.endurance = 3;
+		this.setEndurance(3);
 		this.vida = 3;
 		this.ciclos = 0;
 	}
@@ -60,5 +61,13 @@ public class Peashooter {
 	}
 	public int getCiclos() {
 		return ciclos;
+	}
+
+	public int getEndurance() {
+		return endurance;
+	}
+
+	public void setEndurance(int endurance) {
+		this.endurance = endurance;
 	}
 }
