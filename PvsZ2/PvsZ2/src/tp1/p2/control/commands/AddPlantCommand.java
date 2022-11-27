@@ -16,6 +16,8 @@ public class AddPlantCommand implements Command  {
 	private String plantName;
 
 	private boolean consumeCoins;
+	
+	private String errorMessageP = "No se puede colocar la planta";
 
 	public AddPlantCommand() {
 		new AddPlantCommand(true);
@@ -47,8 +49,16 @@ public class AddPlantCommand implements Command  {
 
 	@Override
 	public ExecutionResult execute(GameWorld game) {
-		//  TODO
-		return new ExecutionResult(true);
+		boolean ok = false;
+		Plant plant = PlantFacctory.isValidPlant(plantName);
+		if(plant != null) {
+			ok = game.addPlant(plant);
+		}
+		if(!ok || plant == null) {
+			System.out.println(errorMessageP);
+			
+		}
+		return new ExecutionResult(ok);
 	}
 
 	@Override

@@ -42,7 +42,7 @@ public class ResetCommand implements Command {
 
 	@Override
 	public ExecutionResult execute(GameWorld game){
-		// TODO add your code here
+		game.reset();
 		return new ExecutionResult(true);
 	}
 

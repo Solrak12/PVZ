@@ -29,7 +29,7 @@ public class ExitCommand extends Command {
 
 	@Override
 	public ExecutionResult execute(GameWorld game) {
-		game.playerQuits();
+		game.setExit();
 		return new ExecutionResult(false);
 	}
 	public Command create(String[] parameters) {
