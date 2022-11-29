@@ -21,6 +21,16 @@ public class ZombieFactory {
 		return zombieIdx >= 0 || zombieIdx < AVAILABLE_ZOMBIES.size();
 	}
 
+	/*public string ZombieInfo(){
+		
+		
+		StringBuilder buffer = new StringBuilder();
+	
+		for(int i =0; i<AVAILABLE_ZOMBIES.lenght();i++) {
+			buffer.append(AVAILABLE_ZOMBIES[i].getInfo() + "\n");
+		}
+		return buffer.toString();
+	}*/
 
 
 	

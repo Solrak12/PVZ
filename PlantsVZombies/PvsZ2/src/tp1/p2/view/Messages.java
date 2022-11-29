@@ -71,6 +71,8 @@ public class Messages {
 	public static final String PLAYER_WINS = "Player wins!";
 
 	public static final String AVAILABLE_PLANTS = "Available plants:";
+	
+	public static final String AVAILABLE_ZOMBIES = "Available zombies:";
 
 	public static final String UNEXPECTED_RUNTIME_ERROR = "Oops!, ಠ_ಠ";
 

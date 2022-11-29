@@ -50,7 +50,11 @@ public class Sunflower extends Plant {
 		ciclos++;
 	}
 
-
+	public string SunfInfo() {
+		StringBuilder buffer = new StringBuilder();
+		buffer.append(getPlantName + ": cost= "+ this.cost + "suncoins, damage= "+ this.damage + ", endurance= "+this.endurance);
+		return buffer;
+	}
 
 
 

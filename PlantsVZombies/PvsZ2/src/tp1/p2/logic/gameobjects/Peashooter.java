@@ -56,7 +56,11 @@ public class Peashooter extends Plant {
 		return false;
 	}
 
-
+	public string PesInfo() {
+		StringBuilder buffer = new StringBuilder();
+		buffer.append(getPlantName + ": cost= "+ this.cost + "suncoins, damage= "+ this.damage + ", endurance= "+this.endurance);
+		return buffer;
+	}
 	
 	@Override
 	public void update() {

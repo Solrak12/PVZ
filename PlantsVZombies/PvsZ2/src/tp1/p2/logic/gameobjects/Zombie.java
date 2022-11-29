@@ -7,6 +7,8 @@ import tp1.p2.logic.GameObjectContainer;
 public class Zombie extends GameObject {
 	private int speed;
 	
+	private int ZombieName = "Zombie"
+	
 	public Zombie() {
 		super(null,0,0);
 		this.endurance=5;
@@ -35,8 +37,15 @@ public class Zombie extends GameObject {
 			
 		}
 	}
+	public string getZombieName(){
+		return this.ZombieName;
+	}
 
-
+	public string ZombieInfo() {
+		StringBuilder buffer = new StringBuilder();
+		buffer.append(getZombieName + ": speed "+ this.speed + ", damage= "+ this.damage + ", endurance= "+this.endurance);
+		return buffer;
+	}
 	public boolean reciveZombieAttack(int damage) {
     	return false;
     }
@@ -54,5 +63,8 @@ public class Zombie extends GameObject {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	public boolean ZombieWinner() {
+        return this.col==0;
+    }
 
 }

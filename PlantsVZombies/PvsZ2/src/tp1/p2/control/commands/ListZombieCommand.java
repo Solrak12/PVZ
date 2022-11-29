@@ -7,7 +7,7 @@ import tp1.p2.logic.gameobjects.Plant;
 import tp1.p2.logic.gameobjects.PlantFactory;
 import tp1.p2.view.Messages;
 
-public class ListPlantsCommand extends Command {
+public class ListZombieCommand extends Command {
 
 	@Override
 	protected String getName() {
@@ -28,12 +28,10 @@ public class ListPlantsCommand extends Command {
 
 	@Override
 	public ExecutionResult execute(GameWorld game) {
-		System.out.println(Messages.AVAILABLE_PLANTS);
+		System.out.println(Messages.AVAILABLE_ZOMBIES);
 		StringBuilder buffer = new StringBuilder();
-		buffer.append(Sunflower.SunfInfo+"\n");
-		buffer.append(Peashooter.PesInfo+"\n");
-		
-		// TODO add your code here
+		buffer.append(Zombie.ZombieInfo+"\n");
+
 
 		System.out.println();
 

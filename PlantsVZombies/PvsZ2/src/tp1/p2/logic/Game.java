@@ -49,13 +49,6 @@ public class Game implements GameStatus, GameWorld {
 		reset();
 	}
 
-	/**
-	 * Resets the game.
-	 */
-	@Override
-	public void reset() {
-		reset(this.level, this.seed);
-	}
 
 	/**
 	 * Resets the game with the provided level and seed.
@@ -115,10 +108,19 @@ public class Game implements GameStatus, GameWorld {
 		return this.actions.size() > 0;
 	}
 	public boolean addPlant(Plant plant, int x, int y) {
-		if(isBoard(x,y)&& GameObjectContainer.isPositionEmpty(x,y) && SunsManager.getCatchedSuns()>=Plant.cost){
+		if(isBoard(x,y)&& GameObjectContainer.isPositionEmpty(x,y) && SunsManager.getSunCoins()>=Plant.cost){
 			plant.getRow(x);
 			plant.getCol(y);
 			SunsManager.setCatchedSuns(SunsManager.getCatchedSuns-Plant.cost);
+			return true;
+		}
+		return false;
+	}
+	public boolean addPlantS(Plant plant, int x, int y) {
+		if(isBoard(x,y)&& GameObjectContainer.isPositionEmpty(x,y)){
+			plant.getRow(x);
+			plant.getCol(y);
+
 			return true;
 		}
 		return false;
@@ -139,8 +141,20 @@ public class Game implements GameStatus, GameWorld {
 		ZombieList = new GameObjectContainer();
 		reset(this.level, this.seed);
 	}
+	public bool isFinished(){
+		boolean ok = false;
+		if(ZombiesManager.getRemainingZombies()==0) {
+			ok = true;
+			System.out.println(PLAYER_WINS);
+		}
+		else if (Zombie.ZombieWinner) {//Zombies ganan
+			ok = true;
+			System.out.println(ZOMBIES_WIN);
 
-
+		} 
+		return ok;
+	}
+	
 	@Override
 	public void addSun() {
 		// TODO Auto-generated method stub

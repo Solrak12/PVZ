@@ -37,6 +37,17 @@ public class PlantFactory {
 		p.setRow(row);
 		return p;
 	}
+	
+	/*public string plantInfo(){
+		
+	
+		StringBuilder buffer = new StringBuilder();
+	
+		for(int i =0; i<AVAILABLE_PLANTS.lenght();i++) {
+			buffer.append(AVAILABLE_PLANTS[i].getInfo() + "\n");
+		}
+		return buffer.toString();
+	}*/
 
 	boolean receiveZombieAttack(int damage) {
 		

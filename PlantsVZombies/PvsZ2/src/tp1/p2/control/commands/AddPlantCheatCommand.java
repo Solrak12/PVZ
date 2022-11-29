@@ -4,7 +4,7 @@ import tp1.p2.control.ExecutionResult;
 import tp1.p2.logic.GameWorld;
 import tp1.p2.view.Messages;
 
-public class AddPlantCommand implements Command  {
+public class AddPlantCheatCommand implements Command  {
 
 	// Aquí no necesitas los atributos de las plantas, commo mucho un parámetro tipo planta pero mejor dentro del método 
 	// execute y no como atributo de clase. Al comando básicamente le da igual la posición de la planta y los demás atributos,
@@ -19,12 +19,8 @@ public class AddPlantCommand implements Command  {
 	
 	private String errorMessageP = "No se puede colocar la planta";
 
-	public AddPlantCommand() {
-		new AddPlantCommand(true);
-	}
-
-	public AddPlantCommand(boolean consumeCoins) {
-		this.consumeCoins = consumeCoins;
+	public AddPlantCheatCommand() {
+		new AddPlantCheatCommand(true);
 	}
 
 	@Override
@@ -52,7 +48,7 @@ public class AddPlantCommand implements Command  {
 		boolean ok = false;
 		Plant plant = PlantFactory.isValidPlant(plantName);
 		if(plant != null) {
-			ok = game.addPlant(plant);
+			ok = game.addPlantS(plant);
 		}
 		if(!ok || plant == null) {
 			System.out.println(errorMessageP);
@@ -63,14 +59,7 @@ public class AddPlantCommand implements Command  {
 
 	@Override
 	public Command create(String[] parameters) {
-		String param = parameters[0];
-		if (param == null || param.isEmpty()) {
-			return  new AddPlantCommand();
-		}
-		else {
-			return new AddPlantCommand(Boolean.valueOf(param));
-		}
-
-	}
+		return null;
 
 }
+

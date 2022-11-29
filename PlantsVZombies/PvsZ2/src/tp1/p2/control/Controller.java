@@ -61,7 +61,7 @@ public class Controller {
 	public void run() {
 		boolean refreshDisplay = true;
 
-		while (!game.isFinished() && !game.isPlayerQuits()) {
+		while (!game.isFinished() && !game.setExit()) {
 
 			// 1. Draw
 			if (refreshDisplay) {
